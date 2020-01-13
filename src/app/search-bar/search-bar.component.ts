@@ -16,6 +16,7 @@ export class SearchBarComponent implements OnInit {
       search: ''
     });
   }
+  
   onSubmit() {
     console.log(this.search);
     this.searchForm.reset();
