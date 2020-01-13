@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./search-bar.component.css']
 })
 export class SearchBarComponent implements OnInit {
-  search;
+  search: string = '';
   searchForm;
   constructor(private formBuilder: FormBuilder) { }
 
@@ -17,9 +17,16 @@ export class SearchBarComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(movieName) {
+    this.search = movieName;
     console.log(this.search);
     this.searchForm.reset();
   }
 
+  onKeyUp(event: any) { // without type info
+    if (event.target.value) {
+      this.search = event.target.value;
+      console.log(this.search);
+    }
+  }
 }
